@@ -2,8 +2,8 @@
 $MERCHANT_KEY = "Lqifgz56";
 $SALT = "m9Laeld0Lg";
 $amount="1";
-$surl="https://sparkdonate/success.php";
-$furl="http://sparkdonate/failure.php";
+$surl="https://sparkdonate/html/success.php";
+$furl="http://sparkdonate/html/failure.php";
 // Merchant Key and Salt as provided by Payu.
 $PAYU_BASE_URL = "https://sandboxsecure.payu.in";   // For Sandbox Mode
 //$PAYU_BASE_URL = "https://secure.payu.in";      // For Production Mode
