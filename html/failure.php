@@ -18,7 +18,7 @@ if(
       <title>Payment</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="2;url=index.html">
+    <meta http-equiv="refresh" content="2;url=../index.php">
   </head>
   <body>
   <div class="bg-image"></div>
