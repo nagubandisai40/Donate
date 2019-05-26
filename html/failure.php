@@ -79,7 +79,7 @@ mail($to,$sub,$msg);
                 </div>
             </div>
             <div class="button">
-              <a href="index.html" style="text-decoration:none;color:#000"><center><h5>Ok</h5></center></a>
+              <a href="../index.php" style="text-decoration:none;color:#000"><center><h5>Ok</h5></center></a>
             </div>
           </div>
       </div>
