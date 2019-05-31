@@ -1,0 +1,6 @@
+cardno:5123456789012346
+expdate:05/20
+cvv:123
+name:Test.
+--------------------------------------------------------------------------
+since it is test application they only allow us to test the card.If we remove the sandbox and use it Then we can pay money through all modes(payapl,bhim,phonepe,etc...)
