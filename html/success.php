@@ -41,7 +41,7 @@ $productinfo=$_POST["productinfo"];
 $email=$_POST["email"];
 $salt="";
 // Salt should be same Post Request
-$to=$email;
+/*$to=$email;
 $sub='Payment Success for amount Rs.'.$amount;
 $msg='We have recived your payment of Rs.'.$amount."\n".
 'Payment Information:'."\n".
@@ -51,7 +51,49 @@ $msg='We have recived your payment of Rs.'.$amount."\n".
 'email:'.$email."\n".
 'In case of any queries please mention the merchant id while contacting the support team.'."\n".
 'Thank you';
-mail($to,$sub,$msg);
+mail($to,$sub,$msg);*/
+
+ date_default_timezone_set('Asia/Kolkata');
+
+  require('../fpdf181/fpdf.php');
+  require ('class.phpmailer.php');
+  require('class.smtp.php');
+  $pdf=new FPDF();
+  $pdf->AddPage();
+  $pdf->SetFont('Arial','B','16');
+  $pdf->Cell(150 ,5,'The Spark Foundation',0,0);
+  $pdf->cell(59,5,'INVOICE',0,1);
+  $pdf->SetFont('Arial','',12);
+  $pdf->cell(160,11,'Date:',0,0,'R');
+  $pdf->cell(170,11,date("d-M-Y"),0,1);
+  $pdf->cell(160,2,'Customer ID:',0,0,'R');
+  $pdf->cell(170,2,substr($posted_hash,0,10),0,1);
+  $pdf->SetFont('Arial','',14);
+  $pdf->cell(150,50,'Payment Information:',0,0);
+  $pdf->cell(-117,65,'TransactionId:',0,0,'R');
+  $pdf->cell(10,65,$txnid,0,1);
+  $pdf->cell(20,-50,'Amount:',0,0);
+  $pdf->cell(10,-50,$amount,0,1);
+  $pdf->cell(18,65,'E-mail:',0,0);
+  $pdf->cell(10,65,$email,0,1);
+  $pdf->cell(10,-46,'In case of any queries please mention TransactionId while contacting our Support Team.',0,1);
+  $pdf->cell(10,65,'Thank You.',0,0);
+  
+  $mail = new PHPMailer;
+  $mail->Username = "firstwebsitepay@gmail.com";
+  $mail->Password = "9849839175";
+  $mail->setFrom('firstwebsitepay@gmail.com', 'sparkdonate');
+  $mail->addAddress($email,'');     // Add a recipient
+  $mail->isHTML(true);                                  // Set email format to HTML
+  $mail->Subject = 'Payment Success for amount Rs.'.$amount;
+  $mail->Body = 'Payment Received and the details of your payment can be found in the document provided';
+  //$mail->AddStringAttachment($doc, 'Successful Donation', 'base64', 'application/pdf');
+$mail->addStringAttachment($pdf->Output("PaymentSuccess.pdf",'S'), 'PaymentSuccess.pdf', $encoding = 'base64', $type = 'application/pdf');
+    
+    $mail->send();
+ 
+	
+	
 ?>
 
 
